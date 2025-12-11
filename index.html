@@ -1,10 +1,825 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Welcome to My Website</title>
+  <meta charset="UTF-8" />
+  <title>Dr. Chantri Polprasert | AI & Sign Language Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Dr. Chantri Polprasert - Assistant Professor at AIT, working on AI, sign language technologies, data science, and AI for social good." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --border-subtle: #1f2937;
+      --max-width: 1100px;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.85),
+        transparent
+      );
+    }
+
+    .nav-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-title {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-title span {
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0.9rem;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: var(--text-soft);
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 2.4rem;
+      padding: 2.3rem 1.5rem;
+      margin: 1.3rem 0 2.5rem;
+      border-radius: 22px;
+      background: radial-gradient(circle at top left, #1f2937, #020617);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--text-soft);
+      margin-bottom: 1rem;
+      max-width: 36rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      padding: 0.2rem 0.7rem;
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .badge strong {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: background 0.18s ease, border-color 0.18s ease,
+        transform 0.05s ease;
+    }
+
+    .btn:hover {
+      background: #0b1120;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      border-color: transparent;
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #38bdf8, #4ade80);
+    }
+
+    .hero-right {
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
+      padding: 1rem;
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 0.6rem;
+    }
+
+    .highlight-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--accent-soft);
+    }
+
+    .highlight-card h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .highlight-card p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+    }
+
+    .highlight-list {
+      margin-top: 0.45rem;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .highlight-list li {
+      margin-left: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    section {
+      margin-bottom: 2.2rem;
+    }
+
+    section h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--text-soft);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-inner {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      padding: 1.2rem 1.4rem;
+      background: rgba(15, 23, 42, 0.92);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 1.6rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      border-radius: 999px;
+      padding: 0.1rem 0.6rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-soft);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      padding: 0.9rem 1rem;
+    }
+
+    .card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card span.tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .card p {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+      margin-bottom: 0.3rem;
+    }
+
+    .card ul {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      margin-left: 1.1rem;
+      margin-top: 0.25rem;
+    }
+
+    .pub-list {
+      list-style: none;
+      font-size: 0.86rem;
+    }
+
+    .pub-item {
+      margin-bottom: 0.7rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+
+    .pub-title {
+      font-weight: 600;
+    }
+
+    .pub-meta {
+      color: var(--text-soft);
+      font-size: 0.82rem;
+    }
+
+    .pill-heading {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 0.3rem;
+    }
+
+    .list-compact {
+      padding-left: 1.1rem;
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .list-compact li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.2rem 2.4rem;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.5rem 1.1rem;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .two-column {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        position: static;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        justify-content: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, I'm Dr. Chantri Polprasert</h1>
-    <p>Welcome to my personal GitHub.io profile site.</p>
+  <header>
+    <div class="nav-container">
+      <div class="nav-title">
+        <span>AI & Sign Language</span>
+        <div>Dr. Chantri&nbsp;Polprasert</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#sign-language">Sign Language AI</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#contact">Links</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="hero-subtitle">AI · Sign Language · Data Science</div>
+        <h1 class="hero-title">Dr. Chantri Polprasert</h1>
+        <p class="hero-tagline">
+          Assistant Professor at the Asian Institute of Technology (AIT), working at the
+          intersection of <strong>AI, sign language technologies, data science, and AI for social good</strong>,
+          with a focus on inclusive communication in ASEAN.
+        </p>
+        <div class="hero-badges">
+          <div class="badge"><strong>Affiliation</strong>&nbsp;AIT · School of Engineering &amp; Technology</div>
+          <div class="badge"><strong>Focus</strong>&nbsp;AI for Sign Languages · Inclusive Tech</div>
+          <div class="badge"><strong>Region</strong>&nbsp;ASEAN &amp; Asia-Pacific</div>
+        </div>
+        <div class="hero-links">
+          <!-- Replace # with your real links when ready -->
+          <a class="btn btn-primary" href="#sign-language">View Sign Language Projects</a>
+          <a class="btn" href="#publications">Recent Publications</a>
+          <a class="btn" href="#teaching">For Students</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="highlight-card">
+          <h3>Research Snapshot</h3>
+          <p>
+            My work spans <strong>sign language recognition &amp; translation</strong>,
+            <strong>AI for accessibility</strong>, and
+            <strong>data-intensive applications</strong> for social good.
+          </p>
+          <ul class="highlight-list">
+            <li>AI-driven sign language corpora &amp; translation for ASEAN</li>
+            <li>Multimodal deep learning for visual communication</li>
+            <li>Data engineering &amp; MLOps for real-world systems</li>
+          </ul>
+        </div>
+        <div class="highlight-card">
+          <h3>Selected Keywords</h3>
+          <p class="chips">
+            <span class="chip">Sign Language Technologies</span>
+            <span class="chip">Computer Vision</span>
+            <span class="chip">Multimodal AI</span>
+            <span class="chip">Data Engineering &amp; MLOps</span>
+            <span class="chip">AI for Social Good</span>
+            <span class="chip">Education &amp; Accessibility</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="section-inner two-column">
+        <div>
+          <p>
+            I am an Assistant Professor in the <strong>Computer Science / Data Science &amp; AI</strong>
+            programs at the <strong>Asian Institute of Technology (AIT), Thailand</strong>.
+            My work combines <strong>AI, data-intensive systems, and inclusive technologies</strong> to
+            support equitable access to information and services, especially for
+            <strong>deaf and hard-of-hearing communities in ASEAN</strong>.
+          </p>
+          <p style="margin-top: 0.6rem;">
+            I collaborate with partners across Thailand, Malaysia, Indonesia, Japan, and beyond
+            on building <strong>sign language corpora</strong>, <strong>translation systems</strong>,
+            and <strong>AI-powered tools</strong> that can be deployed in real-world settings
+            such as education, broadcasting, and public services.
+          </p>
+        </div>
+        <div>
+          <div class="pill-heading">Current interests</div>
+          <ul class="list-compact">
+            <li>Large-scale sign language datasets and annotation workflows</li>
+            <li>Neural architectures for sign recognition and translation</li>
+            <li>LLM-augmented systems for accessible knowledge retrieval</li>
+            <li>Data engineering, MLOps, and trustworthy AI in practice</li>
+            <li>AI in education and technology for social good</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <h2>Research Areas</h2>
+      <div class="section-inner card-grid">
+        <div class="card">
+          <span class="tag">Core Area</span>
+          <h3>AI for Sign Languages</h3>
+          <p>
+            End-to-end pipelines for <strong>sign language understanding</strong>, from corpus
+            collection and annotation to recognition, translation, and deployment.
+          </p>
+          <ul>
+            <li>Sign language recognition and gloss prediction</li>
+            <li>Sign-to-text / text-to-sign translation</li>
+            <li>Visual-linguistic representations and embeddings</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="tag">Core Area</span>
+          <h3>Multimodal &amp; Data-Intensive AI Systems</h3>
+          <p>
+            Architectures and pipelines for large-scale <strong>video, text, and sensor data</strong>,
+            emphasizing robustness and real-world deployment.
+          </p>
+          <ul>
+            <li>Data engineering &amp; MLOps for streaming workloads</li>
+            <li>Scalable model training &amp; evaluation</li>
+            <li>Monitoring, explainability, and governance</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="tag">AI for Social Good</span>
+          <h3>Inclusive Technologies &amp; Education</h3>
+          <p>
+            AI-driven tools that support <strong>inclusive communication, accessible
+            learning, and public services</strong> aligned with the SDGs.
+          </p>
+          <ul>
+            <li>Accessible digital signage and media</li>
+            <li>AI in education and learning analytics</li>
+            <li>Ethical, inclusive AI design in ASEAN</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGN LANGUAGE AI SHOWCASE -->
+    <section id="sign-language">
+      <h2>Sign Language AI Projects</h2>
+      <div class="section-inner">
+        <p>
+          A major focus of my work is developing <strong>AI-based sign language technologies</strong>
+          for <strong>ASEAN deaf communities</strong>. This includes building corpora, recognition
+          systems, translation models, and deployment prototypes with partners in
+          Thailand, Malaysia, Indonesia, and Japan.
+        </p>
+
+        <div class="card-grid" style="margin-top: 1.1rem;">
+          <div class="card">
+            <span class="tag">Corpus &amp; Datasets</span>
+            <h3>ASEAN Sign Language Corpus</h3>
+            <p>
+              Cross-lingual sign language datasets capturing varieties such as
+              Thai Sign Language (TSL) and Indonesian Sign Language (BISINDO),
+              enabling training and benchmarking of modern models.
+            </p>
+            <ul>
+              <li>High-quality video recordings with gloss-level annotation</li>
+              <li>Integration with tools such as ELAN and keypoint extraction</li>
+              <li>Designed for research, education, and downstream applications</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="tag">Models &amp; Architectures</span>
+            <h3>Sign Recognition &amp; Translation</h3>
+            <p>
+              Exploring deep learning pipelines for <strong>isolated and continuous
+              sign recognition</strong>, as well as <strong>sign-to-text translation</strong>,
+              using state-of-the-art video and sequence models.
+            </p>
+            <ul>
+              <li>CNN/LSTM and transformer-based video models</li>
+              <li>Multimodal representations combining keypoints and raw video</li>
+              <li>Evaluation across multiple signers and language varieties</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="tag">Applications</span>
+            <h3>Accessible Services &amp; Prototypes</h3>
+            <p>
+              Prototype systems that bring sign language AI into
+              <strong>real-world environments</strong>, such as education and public
+              information services.
+            </p>
+            <ul>
+              <li>Sign language support for digital signage and broadcasting</li>
+              <li>Interactive tools for learning and practicing sign language</li>
+              <li>Concepts for browser extensions and avatar-based translation</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="margin-top: 1rem; font-size: 0.86rem; color: var(--text-soft);">
+          <em>
+            If you are interested in collaborating on sign language datasets, models,
+            or deployment pilots in ASEAN, feel free to reach out.
+          </em>
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS / GRANTS -->
+    <section id="projects">
+      <h2>Selected Projects &amp; Initiatives</h2>
+      <div class="section-inner card-grid">
+        <div class="card">
+          <span class="tag">Ongoing</span>
+          <h3>AI for Sign Language in ASEAN</h3>
+          <p>
+            Multi-partner collaboration focusing on <strong>sign language corpora,
+            recognition, and translation</strong> across countries in the ASEAN region.
+          </p>
+          <ul>
+            <li>Cross-institutional research and capacity building</li>
+            <li>Focus on accessibility and public services</li>
+            <li>Integration of linguistic and technical perspectives</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="tag">AI &amp; Accessibility</span>
+          <h3>Inclusive AI in Education &amp; Media</h3>
+          <p>
+            Applying AI to improve <strong>access to education, digital content, and
+            public information</strong> for diverse learners and communities.
+          </p>
+          <ul>
+            <li>AI-enhanced learning platforms and analytics</li>
+            <li>Accessibility features for digital media and signage</li>
+            <li>Alignment with SDGs and regional policy priorities</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="tag">Data &amp; Systems</span>
+          <h3>Data Engineering &amp; MLOps for Social Good</h3>
+          <p>
+            Design of <strong>data pipelines and MLOps frameworks</strong> to support
+            robust, reproducible AI applications in domains such as
+            accessibility, governance, and public services.
+          </p>
+          <ul>
+            <li>Streaming and batch data processing architectures</li>
+            <li>Model lifecycle management and monitoring</li>
+            <li>Responsible and trustworthy AI practices</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <h2>Publications (Selected)</h2>
+      <div class="section-inner">
+        <p style="margin-bottom: 0.7rem;">
+          Below is a short selection of representative publications. For a complete and
+          up-to-date list, please visit my
+          <!-- Replace with your real Google Scholar later -->
+          <a href="#" target="_blank" rel="noopener">Google Scholar profile</a>
+          (link to be added).
+        </p>
+
+        <ul class="pub-list">
+          <!-- EXAMPLE ENTRY — replace with your real publications -->
+          <li class="pub-item">
+            <div class="pub-title">
+              [Sample] AI-Driven Sign Language Recognition for Inclusive Communication in ASEAN
+            </div>
+            <div class="pub-meta">
+              Author(s). <em>Conference/Journal Name</em>, Year.
+            </div>
+          </li>
+
+          <li class="pub-item">
+            <div class="pub-title">
+              [Sample] Data-Intensive Architectures for Multimodal Learning in Education Platforms
+            </div>
+            <div class="pub-meta">
+              Author(s). <em>Conference/Journal Name</em>, Year.
+            </div>
+          </li>
+
+          <li class="pub-item">
+            <div class="pub-title">
+              [Sample] Towards Accessible AI: Design Principles for Inclusive Machine Learning Systems
+            </div>
+            <div class="pub-meta">
+              Author(s). <em>Conference/Journal Name</em>, Year.
+            </div>
+          </li>
+        </ul>
+
+        <p style="margin-top: 0.5rem; font-size: 0.84rem; color: var(--text-soft);">
+          You can replace the placeholder items above with your own BibTeX or citation
+          list. A simple pattern is:
+          <br />
+          <code>Author(s). "Title." Conference / Journal, Year.</code>
+        </p>
+      </div>
+    </section>
+
+    <!-- TEACHING -->
+    <section id="teaching">
+      <h2>Teaching &amp; Supervision</h2>
+      <div class="section-inner two-column">
+        <div>
+          <div class="pill-heading">Courses</div>
+          <ul class="list-compact">
+            <li>Computer Programming for Data Science &amp; AI</li>
+            <li>Data Engineering &amp; MLOps</li>
+            <li>Advanced Data Structures &amp; Algorithms</li>
+            <li>Full-Stack Web Application Development</li>
+            <li>AI in Cybersecurity / Applied Machine Learning</li>
+          </ul>
+
+          <p style="margin-top: 0.6rem; font-size: 0.86rem; color: var(--text-soft);">
+            I emphasize <strong>hands-on, project-based learning</strong> with real-world
+            datasets and systems, and encourage students to explore AI for social good
+            and accessibility use cases wherever possible.
+          </p>
+        </div>
+        <div>
+          <div class="pill-heading">For Prospective Students</div>
+          <p style="font-size: 0.87rem;">
+            I supervise <strong>Master's and PhD students</strong> interested in:
+          </p>
+          <ul class="list-compact">
+            <li>Sign language recognition, translation, and corpora</li>
+            <li>Multimodal deep learning (vision + language)</li>
+            <li>Data engineering, MLOps, and trustworthy AI</li>
+            <li>AI applications for accessibility and education</li>
+          </ul>
+          <p style="margin-top: 0.5rem; font-size: 0.84rem; color: var(--text-soft);">
+            If you would like to work on these topics at AIT, please include your CV,
+            transcripts, and a short research statement when you contact me.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / LINKS -->
+    <section id="contact">
+      <h2>Contact &amp; Links</h2>
+      <div class="section-inner two-column">
+        <div>
+          <p>
+            The best way to reach me is via my institutional email at the
+            <strong>Asian Institute of Technology (AIT)</strong>.
+          </p>
+          <p style="margin-top: 0.5rem; font-size: 0.87rem;">
+            You can also find more details on:
+          </p>
+          <ul class="list-compact">
+            <li>Official AIT profile (link to be added)</li>
+            <li>Google Scholar (link to be added)</li>
+            <li>ORCID / DBLP (links to be added)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="pill-heading">Online Profiles</div>
+          <ul class="list-compact">
+            <li>
+              GitHub:
+              <a href="https://github.com/chantrip" target="_blank" rel="noopener">
+                github.com/chantrip
+              </a>
+            </li>
+            <li>
+              GitHub Pages:
+              <a href="https://chantrip.github.io" target="_blank" rel="noopener">
+                chantrip.github.io
+              </a>
+            </li>
+            <!-- Replace # with the actual URLs when ready -->
+            <li>Google Scholar: <a href="#" target="_blank" rel="noopener">[add link]</a></li>
+            <li>LinkedIn: <a href="#" target="_blank" rel="noopener">[add link]</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>&copy; <span id="year"></span> Chantri Polprasert</div>
+    <div>Built with GitHub Pages · This site is a simple static HTML/CSS profile.</div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
